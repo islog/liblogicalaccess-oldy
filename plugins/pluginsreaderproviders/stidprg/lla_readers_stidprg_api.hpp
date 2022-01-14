@@ -1,0 +1,42 @@
+
+#ifndef LLA_READERS_STIDPRG_API_H
+#define LLA_READERS_STIDPRG_API_H
+
+#ifdef STIDPRGREADERS_STATIC_DEFINE
+#  define LLA_READERS_STIDPRG_API
+#  define STIDPRGREADERS_NO_EXPORT
+#else
+#  ifndef LLA_READERS_STIDPRG_API
+#    ifdef stidprgreaders_EXPORTS
+        /* We are building this library */
+#      define LLA_READERS_STIDPRG_API __declspec(dllexport)
+#    else
+        /* We are using this library */
+#      define LLA_READERS_STIDPRG_API __declspec(dllimport)
+#    endif
+#  endif
+
+#  ifndef STIDPRGREADERS_NO_EXPORT
+#    define STIDPRGREADERS_NO_EXPORT 
+#  endif
+#endif
+
+#ifndef STIDPRGREADERS_DEPRECATED
+#  define STIDPRGREADERS_DEPRECATED __declspec(deprecated)
+#endif
+
+#ifndef STIDPRGREADERS_DEPRECATED_EXPORT
+#  define STIDPRGREADERS_DEPRECATED_EXPORT LLA_READERS_STIDPRG_API STIDPRGREADERS_DEPRECATED
+#endif
+
+#ifndef STIDPRGREADERS_DEPRECATED_NO_EXPORT
+#  define STIDPRGREADERS_DEPRECATED_NO_EXPORT STIDPRGREADERS_NO_EXPORT STIDPRGREADERS_DEPRECATED
+#endif
+
+#if 0 /* DEFINE_NO_DEPRECATED */
+#  ifndef STIDPRGREADERS_NO_DEPRECATED
+#    define STIDPRGREADERS_NO_DEPRECATED
+#  endif
+#endif
+
+#endif /* LLA_READERS_STIDPRG_API_H */

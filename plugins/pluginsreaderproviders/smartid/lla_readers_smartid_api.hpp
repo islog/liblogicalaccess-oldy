@@ -1,0 +1,42 @@
+
+#ifndef LLA_READERS_SMARTID_API_H
+#define LLA_READERS_SMARTID_API_H
+
+#ifdef SMARTIDREADERS_STATIC_DEFINE
+#  define LLA_READERS_SMARTID_API
+#  define SMARTIDREADERS_NO_EXPORT
+#else
+#  ifndef LLA_READERS_SMARTID_API
+#    ifdef smartidreaders_EXPORTS
+        /* We are building this library */
+#      define LLA_READERS_SMARTID_API __declspec(dllexport)
+#    else
+        /* We are using this library */
+#      define LLA_READERS_SMARTID_API __declspec(dllimport)
+#    endif
+#  endif
+
+#  ifndef SMARTIDREADERS_NO_EXPORT
+#    define SMARTIDREADERS_NO_EXPORT 
+#  endif
+#endif
+
+#ifndef SMARTIDREADERS_DEPRECATED
+#  define SMARTIDREADERS_DEPRECATED __declspec(deprecated)
+#endif
+
+#ifndef SMARTIDREADERS_DEPRECATED_EXPORT
+#  define SMARTIDREADERS_DEPRECATED_EXPORT LLA_READERS_SMARTID_API SMARTIDREADERS_DEPRECATED
+#endif
+
+#ifndef SMARTIDREADERS_DEPRECATED_NO_EXPORT
+#  define SMARTIDREADERS_DEPRECATED_NO_EXPORT SMARTIDREADERS_NO_EXPORT SMARTIDREADERS_DEPRECATED
+#endif
+
+#if 0 /* DEFINE_NO_DEPRECATED */
+#  ifndef SMARTIDREADERS_NO_DEPRECATED
+#    define SMARTIDREADERS_NO_DEPRECATED
+#  endif
+#endif
+
+#endif /* LLA_READERS_SMARTID_API_H */

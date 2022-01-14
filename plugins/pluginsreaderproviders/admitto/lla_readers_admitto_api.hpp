@@ -1,0 +1,42 @@
+
+#ifndef LLA_READERS_ADMITTO_API_H
+#define LLA_READERS_ADMITTO_API_H
+
+#ifdef ADMITTOREADERS_STATIC_DEFINE
+#  define LLA_READERS_ADMITTO_API
+#  define ADMITTOREADERS_NO_EXPORT
+#else
+#  ifndef LLA_READERS_ADMITTO_API
+#    ifdef admittoreaders_EXPORTS
+        /* We are building this library */
+#      define LLA_READERS_ADMITTO_API __declspec(dllexport)
+#    else
+        /* We are using this library */
+#      define LLA_READERS_ADMITTO_API __declspec(dllimport)
+#    endif
+#  endif
+
+#  ifndef ADMITTOREADERS_NO_EXPORT
+#    define ADMITTOREADERS_NO_EXPORT 
+#  endif
+#endif
+
+#ifndef ADMITTOREADERS_DEPRECATED
+#  define ADMITTOREADERS_DEPRECATED __declspec(deprecated)
+#endif
+
+#ifndef ADMITTOREADERS_DEPRECATED_EXPORT
+#  define ADMITTOREADERS_DEPRECATED_EXPORT LLA_READERS_ADMITTO_API ADMITTOREADERS_DEPRECATED
+#endif
+
+#ifndef ADMITTOREADERS_DEPRECATED_NO_EXPORT
+#  define ADMITTOREADERS_DEPRECATED_NO_EXPORT ADMITTOREADERS_NO_EXPORT ADMITTOREADERS_DEPRECATED
+#endif
+
+#if 0 /* DEFINE_NO_DEPRECATED */
+#  ifndef ADMITTOREADERS_NO_DEPRECATED
+#    define ADMITTOREADERS_NO_DEPRECATED
+#  endif
+#endif
+
+#endif /* LLA_READERS_ADMITTO_API_H */
